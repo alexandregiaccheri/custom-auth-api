@@ -21,10 +21,10 @@ namespace CustomAuthApi.Services
             _configuration = configuration;
         }
 
-        public bool CheckForValidRole(string role)
+        public bool CheckForInvalidRole(string role)
         {
-            if (role == "admin" || role == "user") return true;
-            else return false;
+            if (role == "admin" || role == "user") return false;
+            else return true;
         }
 
         public bool CheckUserPasswordCombination(LoginDTO payload, User user)

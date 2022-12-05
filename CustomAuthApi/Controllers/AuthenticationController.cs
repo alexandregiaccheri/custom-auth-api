@@ -17,7 +17,7 @@ namespace CustomAuthApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(LoginDTO payload)
+        public async Task<ActionResult<string>> Login(LoginDTO payload)
         {
             var user = await _userService.GetUserAsync(payload.Email);
             if (user != null)
@@ -28,11 +28,11 @@ namespace CustomAuthApi.Controllers
                 else return BadRequest("Wrong email/password combination");
             }
 
-            else return BadRequest("User not found!");
+            else return BadRequest("User not found");
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(CreateUserDTO payload)
+        public async Task<ActionResult<string>> Register(CreateUserDTO payload)
         {
             var emailCheck = new Regex("^\\S+@\\S+\\.\\S+$");
             var passwordCheck = new
@@ -47,12 +47,13 @@ namespace CustomAuthApi.Controllers
             if (!passwordCheck.IsMatch(payload.Password))
                 return BadRequest("The password must contain at least: 8+ " +
                     "characters, one or more upper case letters, one or more " +
-                    "lower case letters and at least one special character!");
+                    "lower case letters, one or more numbers and at least one " +
+                    "special character!");
 
             if (!payload.Password.Equals(payload.RepeatPassword))
                 return BadRequest("Passwords do not match!");
 
-            if (!_userService.CheckForValidRole(payload.Role))
+            if (_userService.CheckForInvalidRole(payload.Role))
                 return BadRequest("Accepted roles are \"admin\" and \"user\"");
 
             await _userService.CreateUserAsync(payload);

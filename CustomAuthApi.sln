@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAuthApi", "CustomAuthApi\CustomAuthApi.csproj", "{19E970E8-7853-4153-85CA-3938821AAEFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomAuthApi", "CustomAuthApi\CustomAuthApi.csproj", "{19E970E8-7853-4153-85CA-3938821AAEFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAuthApi.Testing", "CustomAuthApi.Testing\CustomAuthApi.Testing.csproj", "{70FF3E38-829E-4AE6-902B-FBAB7588241A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{19E970E8-7853-4153-85CA-3938821AAEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19E970E8-7853-4153-85CA-3938821AAEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19E970E8-7853-4153-85CA-3938821AAEFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70FF3E38-829E-4AE6-902B-FBAB7588241A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70FF3E38-829E-4AE6-902B-FBAB7588241A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70FF3E38-829E-4AE6-902B-FBAB7588241A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70FF3E38-829E-4AE6-902B-FBAB7588241A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

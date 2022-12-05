@@ -5,7 +5,7 @@ namespace CustomAuthApi.Services
 {
     public interface IUserService
     {
-        bool CheckForValidRole(string role);
+        bool CheckForInvalidRole(string role);
 
         bool CheckUserPasswordCombination(LoginDTO payload, User user);
 
