@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace CustomAuthApi.Repository
+namespace CustomAuthApi.Data.Repository.IRepository
 {
     public interface IRepository<T> where T : class
     {

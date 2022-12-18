@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace CustomAuthApi.Migrations
+namespace CustomAuthApi.Data.Migrations
 {
     /// <inheritdoc />
     public partial class AddRolesToUsers : Migration

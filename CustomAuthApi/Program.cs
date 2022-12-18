@@ -1,6 +1,7 @@
-using CustomAuthApi.Data;
+using CustomAuthApi.Data.Context;
+using CustomAuthApi.Data.Repository.IRepository;
 using CustomAuthApi.Repository;
-using CustomAuthApi.Services;
+using CustomAuthApi.Services.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -42,7 +43,7 @@ builder.Services.AddDbContext<CustomAuthDbContext>(options =>
         .GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
 
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
-builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

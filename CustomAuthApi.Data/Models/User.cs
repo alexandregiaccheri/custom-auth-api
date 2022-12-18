@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CustomAuthApi.Models
+namespace CustomAuthApi.Data.Models
 {
 #pragma warning disable CS8618
     public class User

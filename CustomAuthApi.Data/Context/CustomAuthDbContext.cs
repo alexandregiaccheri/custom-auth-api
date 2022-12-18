@@ -1,7 +1,7 @@
-﻿using CustomAuthApi.Models;
+﻿using CustomAuthApi.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CustomAuthApi.Data
+namespace CustomAuthApi.Data.Context
 {
     public class CustomAuthDbContext : DbContext
     {

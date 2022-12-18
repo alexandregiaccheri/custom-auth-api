@@ -1,8 +1,9 @@
-﻿using CustomAuthApi.Data;
+﻿using CustomAuthApi.Data.Context;
+using CustomAuthApi.Data.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace CustomAuthApi.Repository
+namespace CustomAuthApi.Data.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
