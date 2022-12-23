@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 12px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .component-card {
+        width: 90% !important;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #222;
+    color: #ddd;
+}
+
+.component-card {
+    margin-inline: auto;
+    width: 70%;
+}
+
+.component-card-header {
+    display: flex;
+}
+
+.component-card-heading {
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.home-container__icon {
+    height: 2.4rem;
+    width: 2.4rem;
+    transform: translateY(3px);
+}

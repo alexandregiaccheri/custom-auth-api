@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="component-card">
+    <div class="component-card-header">
+        <ion-icon class="home-container__icon" name="home-outline"></ion-icon>
+        <h1 class="component-card-heading">&nbsp;Home</h1>
+    </div>
+
+    <a class="btn btn-outline-light d-block mb-3" style="width: 16rem" href="Auth/Register">Go to Register Page</a>
+    <a class="btn btn-light d-block" style="width: 16rem" href="Auth/Login">Go to Login Page</a>
+
+    <p class="mt-4">Currently logged in? @(HttpContext.Session.GetString("JWT") != null ? "Yes" : "No")</p>
+    @if (HttpContext.Session.GetString("JWT") != null)
+    {
+        <p>
+            Logged account: @HttpContext.Session.GetString("User") <br>
+            Account role: @HttpContext.Session.GetString("Role")
+        </p>
+    }
+
+    <form method="post">        
+        <button type="submit" class="btn btn-info text-white fw-bold mb-2" style="width: 16rem" asp-page-handler="Unprotected">GET - Unprotected</button>
+    </form>
+
+    <form method="post">
+        <button type="submit" class="btn btn-info text-white fw-bold mb-2" style="width: 16rem" asp-page-handler="Protected">GET - Admin or User required</button>
+    </form>
+
+    <form method="post">
+        <button type="submit" class="btn btn-info text-white fw-bold mb-2" style="width: 16rem" asp-page-handler="AdminProtected">GET - Admin Only</button>
+    </form>
+
+    @if (ViewData["TestResponseOk"] != null)
+    {
+        <h5 class="text-success">@ViewData["TestResponseOk"]</h5>
+    }
+    @if (ViewData["TestResponseFail"] != null)
+    {
+        <h5 class="text-danger">@ViewData["TestResponseFail"]</h5>
+    }
+
+</div>

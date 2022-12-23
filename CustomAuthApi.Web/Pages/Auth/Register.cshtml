@@ -1,0 +1,72 @@
+﻿@page
+@model CustomAuthApi.Web.Pages.Auth.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+@if (HttpContext.Session.GetString("JWT") == null)
+{
+    <form method="post">
+        <div class="component-card">
+            <h2 class="component-card-heading">Register</h2>
+
+            <div class="col-12 mb-4">
+                <label class="form-label" asp-for="@Model.Register.Email"></label>
+                <input class="form-control" type="email" asp-for="@Model.Register.Email" placeholder="Your Email Address" />
+            </div>
+
+            <div class="col-12 mb-4">
+                <label class="form-label" asp-for="@Model.Register.Password"></label>
+                <input class="form-control" type="password" asp-for="@Model.Register.Password" placeholder="Your New Password" />
+            </div>
+
+            <div class="col-12 mb-4">
+                <label class="form-label" asp-for="@Model.Register.RepeatPassword"></label>
+                <input class="form-control" type="password" asp-for="@Model.Register.RepeatPassword" placeholder="Repeat Your Password" />
+            </div>
+
+            <div class="col-12 mb-4">
+                <label class="form-label" asp-for="@Model.Register.Role"></label>
+                <select class="form-select" asp-for="@Model.Register.Role">
+                    <option selected disabled>Select One</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+
+            <button class="btn btn-success mt-3" style="width: 8rem" type="submit">Confirm</button>
+
+
+            @*  Validations  *@
+
+            <div class="d-flex flex-column justify-content-center text-danger mt-4">
+                <span asp-validation-for="@Model.Register.Email"></span>
+                <span asp-validation-for="@Model.Register.Password"></span>
+                <span asp-validation-for="@Model.Register.RepeatPassword"></span>
+                <span asp-validation-for="@Model.Register.Role"></span>
+                @if (TempData["RegisterState"] != null)
+                {
+                    if (TempData["RegisterState"]!.ToString() == "User successfully created")
+                    {
+                        <h5 class="text-success">@TempData["RegisterState"]</h5>
+                    }
+                    else
+                    {
+                        <p>@TempData["RegisterState"]</p>
+                    }
+                }
+            </div>
+
+        </div>
+    </form>
+}
+else
+{
+    <form method="post">
+        <div class="component-card">
+            <h4>Warning</h4>
+            <p>You must first sign-out to create a new user.</p>
+            <button class="btn btn-warning mt-3" style="width: 8rem" type="submit" asp-page-handler="Signout">Sign-out</button>
+        </div>
+    </form>
+}

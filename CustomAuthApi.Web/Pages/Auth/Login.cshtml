@@ -1,0 +1,56 @@
+﻿@page
+@model CustomAuthApi.Web.Pages.Auth.LoginPageModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@if (HttpContext.Session.GetString("JWT") == null)
+{
+    <form method="post">
+        <div class="component-card">
+            <h2 class="component-card-heading">Login</h2>
+
+            <div class="col-12 mb-4">
+                <label class="form-label" asp-for="@Model.Login.Email"></label>
+                <input class="form-control" type="email" asp-for="@Model.Login.Email" placeholder="Your Email Address" />
+            </div>
+
+            <div class="col-12 mb-4">
+                <label class="form-label" asp-for="@Model.Login.Password"></label>
+                <input class="form-control" type="password" asp-for="@Model.Login.Password" placeholder="Your Password" />
+            </div>
+
+            <button class="btn btn-success mt-3" style="width: 8rem" type="submit">Confirm</button>
+
+
+            @*  Validations  *@
+
+            <div class="d-flex flex-column text-danger mt-4">
+                <span asp-validation-for="@Model.Login.Email"></span>
+                <span asp-validation-for="@Model.Login.Password"></span>
+                @if (TempData["LoginError"] != null)
+                {
+                    <p>@TempData["LoginError"]</p>
+                }
+            </div>
+
+        </div>
+    </form>
+}
+else
+{
+    <form method="post">
+        @if (HttpContext.Session.GetString("JWT") != null)
+        {
+            <div class="component-card text-break bg-secondary text-white p-4" style="border-radius: 7px">
+                <h3>Succesfully logged in!</h3>
+                <h4>Your JWT is:</h4>
+                <p class="text-wrap">@HttpContext.Session.GetString("JWT")</p>
+            </div>
+        }
+
+        <div class="component-card">
+            <button class="btn btn-warning mt-3" style="width: 8rem" type="submit" asp-page-handler="Signout">Sign-out</button>
+        </div>
+    </form>
+}
